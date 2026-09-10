@@ -32,11 +32,17 @@ def stable_hash(text: str) -> str:
     return hashlib.sha256(normalize_ws(text).encode("utf-8")).hexdigest()[:24]
 
 
+_BLOCK_END = re.compile(r"</(p|div|li|tr|h[1-6]|blockquote|pre|table)>|<br\s*/?>", re.I)
+
+
 def html_to_text(html: str) -> str:
-    s = BeautifulSoup(html or "", "lxml")
+    """Block-level tags become newlines; inline tags do not split words."""
+    html = _BLOCK_END.sub(lambda m: m.group(0) + "\n", html or "")
+    s = BeautifulSoup(html, "lxml")
     for tag in s(["script", "style"]):
         tag.decompose()
-    text = s.get_text("\n")
+    text = s.get_text("")
+    text = "\n".join(line.strip() for line in text.splitlines())
     text = re.sub(r"\n{3,}", "\n\n", text)
     return text.strip()
 

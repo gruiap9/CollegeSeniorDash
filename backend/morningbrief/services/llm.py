@@ -107,7 +107,6 @@ def _structured_gemini(cfg: Config, system: str, user: str, schema: dict[str, An
             model=cfg.llm_model_gemini,
             input=user,
             system_instruction=system,
-            response_mime_type="application/json",
             response_format={"type": "text", "mime_type": "application/json", "schema_": schema},
             generation_config={"max_output_tokens": max_tokens},
         )

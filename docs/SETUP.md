@@ -106,7 +106,7 @@ mb secret set gemini_api_key
 ```
 
 Then set `"llm_provider": "gemini"` in `config.json`. Uses `llm_model_gemini`
-(default `gemini-2.5-flash-lite`) — deliberately a lite model: this workload
+(default `gemini-3.5-flash-lite`) — deliberately a lite model: this workload
 is many small per-email classification calls per sync, not a few hard ones,
 and the newest full-size `gemini-3.x` models carry a much smaller free-tier
 quota. If you switch to a bigger Gemini model and see sync logs warning about

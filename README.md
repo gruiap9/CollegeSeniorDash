@@ -27,7 +27,7 @@ RSS feeds ─┘
 ```bash
 scripts/install.sh          # venv, deps, init data dir, build the .app
 backend/.venv/bin/morningbrief sync     # first sync (course sites + news work with zero setup)
-open "mac/build/Morning Brief.app"
+open "/Applications/Morning Brief.app"
 ```
 
 Then follow [docs/SETUP.md](docs/SETUP.md) to connect Gmail, UMass Outlook,

@@ -10,8 +10,13 @@ scripts/install.sh
 ```
 
 This creates the venv, installs dependencies, runs `morningbrief init`
-(creating `~/Library/Application Support/MorningBrief/`), and builds the app
-to `mac/build/Morning Brief.app`.
+(creating `~/Library/Application Support/MorningBrief/`), builds the app, and
+installs it to `/Applications/Morning Brief.app` (a copy also stays in
+`mac/build/` — that one is only a build artifact, not what you should launch
+day to day). Re-running `scripts/build_app.sh` after a code change rebuilds,
+reinstalls, and — if the app was already running — quits and relaunches it
+automatically. Pass `--no-install` to only refresh `mac/build/` without
+touching the installed copy.
 
 Alias for convenience:
 
@@ -122,7 +127,7 @@ rules alone regardless of provider.
 
 ```bash
 mb install-agent        # launchd LaunchAgent, every 30 min (sync_interval_minutes)
-open "mac/build/Morning Brief.app"
+open "/Applications/Morning Brief.app"
 ```
 
 In the menu-bar menu enable **Launch at login**. The dashboard appears

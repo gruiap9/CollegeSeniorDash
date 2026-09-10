@@ -1,0 +1,641 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title>CS 520: Theory and Practice of Software Engineering.  UMass Amherst.  Fall 2026.</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <meta name="Keywords" content="computer science, software engineering,
+    static analysis, dynamic analysis, speculative analysis, model inference,
+    model checking, formal verification, bug localization, testing, mutation,
+    error-seeding, regression, symbolic execution, umass, amherst, graduate,
+    undergraduate, class" /> <meta name="Description" content="CS 520:
+    Theory and Practice of Software Engineering. UMass Amherst. Fall 2026." />
+    <link rel="SHORTCUT ICON" href="../../images/minuteman.ico">
+</head>
+
+<body>
+	<center>
+    <h1> CS 520: Theory and Practice of Software Engineering </h1>
+    <h2> Fall 2026 </h2>
+  </center>
+
+<a href="#news">News</a> |
+<a href="#description">Description</a> |
+<a href="#logistics">Logistics</a> |
+<a href="#grading">Grading</a> |
+<a href="#schedule">Schedule</a> |
+<a href="#nondiscrimination">Nondiscrimination</a> |
+<a href="#honesty">Academic integrity</a> |
+<a href="#reading">Reading</a> |
+<a href="#prerequisites">Prerequisites</a> |
+<a href="#ack">Acknowledgements</a>
+
+
+<h3 id="news">News:</h3>
+<ul>
+
+  <li>The first class will be September 8, 2026 in CSL E110.</li>
+  
+  <!-- <li><a href="hw1.pdf">Homework 1</a> is posted!  Due: Tu September 17, 2019, 9:00AM EDT</li>  -->
+
+  <!-- <li>Everything's going great!</li> -->
+
+  <!-- <li>The <a href="in-class1.pdf">first in-class exercise</a> will take place in class on Thursday, September 26. Bring a laptop!</li> -->
+  
+  <!-- <li> <a href="finalProject.pdf">Final project description</a> has been
+  posted. Select a project and team by October 17, 2019, 9:00AM EDT. </li> -->
+
+  <!-- <li>The final project team selection was due October 17, 2019. If you do
+  not have a team now, you're on track to fail this course. Please fix this
+  ASAP.</li> -->
+  
+  <!-- <li>The <a href="in-class2.pdf">second in-class exercise</a> is due
+  Tuesday, October 22, 9:00AM EDT.</li> -->
+
+  <!-- <li>There will be no lecture on Nov 5. Instead, attend <a
+  href="https://www.cics.umass.edu/event/proof-engineering-tools-new-era">talk
+   on Nov 6, at 12PM in CS 151</a> titled "Proof Engineering Tools for a New
+  Era." A video of the talk will be posted if you cannot attend, but there
+  will be snacks at the talk!</li> -->
+
+
+  <!-- <li>The third in-class exercise will take place in class on October 29. Bring a laptop!</li> -->
+
+  <!-- <li>The <a href="in-class3.pdf">third in-class exercise</a> is due
+  Tuesday, November 5, 9:00AM EST.</li> -->
+
+  <!-- <li>The fourth in-class exercise  will take place in class on November 19. Bring a laptop!</li> -->
+
+  <!-- <li>The <a href="in-class4.pdf">fourth in-class exercise</a> is due Thursday, November 21, 9AM EST.</li> -->
+  
+  <!-- <li>If 80% of the class <a
+  href="http://owl.oit.umass.edu/partners/courseEvalSurvey/uma/">fills out
+  their class evaluations</a> by Dec 6, everyone will get 0.5% extra credit
+  on file grade, and I will release an (optional) extra credit assignment.</li> -->
+  
+  <!-- <li>Final project presentations will be held in class, Dec 10, in the usual
+  classroom.</li> -->
+
+  <!-- <li><a href="extraCreditZ3.pdf">Extra credit assignment</a> has been posted, due 9AM, Dec 12.</li> -->
+
+  <!-- <li> <a href="midProjectReport.pdf">Final project mid-date
+  presentations</a> assignments has been posted. Due November 7, 2019 9:00AM EST. -->
+  <!-- <br/><a href="https://people.cs.umass.edu/~brun/class/2019Fall/CS520/520FinalProjectMidDateReportSchedule.pdf">See your team's presentation time.</a> -->
+  <!-- </li> -->
+
+  <!-- <li> <a href="hw2.pdf">Homework 2</a> has been posted, due Tuesday, November
+  19, 2019, 9:00AM EST. </li> -->
+
+
+  <!-- <li> <a href="https://www.cics.umass.edu/node/6601">Our final guest lecture of the semester</a> will be Wednesday, November 14, at 4PM (snacks at 3:45) in CS 151. Be sure to attend. </li> -->
+
+  <!-- <li>The <a href="in-class2.pdf">second in-class exercise</a> will take place in class on October 23. Bring a laptop!</li> -->
+
+
+
+  <!-- <li>The <a href="in-class4.pdf">last in-class exercise (4)</a>
+  is due Thursday, Nov 29, 9 AM EST.</li> -->
+
+  <!-- <li>The <a href="in-class4.pdf">last in-class exercise (4)</a>
+  will take place in class on November 27. Bring a laptop!
+  <br/><a href="https://moodle.umass.edu/mod/groupselect/view.php?id=1696739">Sign up
+  for a team beforehand!</a></li> -->
+
+  <!-- <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSc7miRVq-6PCQqcpOzHfdkvpXVdyNdWG_ULxoHbjZprQ1ReAQ/viewform?usp=sf_link">
+    Give Yuriy anonymous feedback on the class.</a>
+  </li> -->
+
+
+  <!-- <li> <a href="ec1.pdf">Extra-credit assignment</a> has been posted. Sign up
+  on a first-come-first-served basis.</li> -->
+
+
+  <!-- <li><font color="red">Come to class on Thursday, December 6 with your laptop for an extra-credit opportunity.</font></li> -->
+
+  <!-- <li>Thank you everyone for a great semester. The final project grades are
+  posted on Moodle, and the final grades are posted on spire.</li> -->
+
+</ul>
+<h3 id="description">Description:</h3>
+
+     <p>CS 520 introduces students to the principal activities and
+     state-of-the-art techniques involved in developing high-quality software
+     systems. Topics include: requirements analysis, formal specification
+     methods, software design, software testing and debugging, program
+     analysis, and automated software engineering.</p>
+
+     <p>
+     This course will cover the following high-level topics:
+     <ul>
+         <li> Software architecture and design
+            <ul>
+               <li>Software modelling</li>
+               <li>Best practices and OO design principles</li>
+               <li>Architecture and design patterns</li>
+	           <li>A brief introduction to functional programming (in Java)</li>
+            </ul>
+         <li> Program analysis and software testing</li>
+         <li> Automated debugging and program repair</li>
+         <li> Collaboration and teamwork</li>
+         <li> Empirical/Experimental Software Engineering </li>
+    </ul>
+    </p>
+
+     <p>Besides becoming familiar with Software Engineering principles and
+     best practices, students will learn about cutting-edge research in
+     Software Engineering, Security, and Human-Computer Interaction. The
+     exercises and the group project provide additional hands-on experience
+     in using state-of-the-art techniques.</p>
+
+<hr/>
+
+<h3 id="logistics">Logistics:</h3>
+<table> 
+	<tr><td>Room:</td><td>CSL E110</td></tr>
+	<tr><td>Lecture:</td><td>Tuesday and Thursday 1:00PM&ndash;2:15PM</td></tr>
+	<tr><td>Instructor:<br/><br/><br/><br/></td>
+		<td><a href="http://cs.umass.edu/~brun">Yuriy Brun</a>
+		  <br/>office: CSL E453
+		  <br/> office hours: TBA
+		  <br/>email: 
+		    <script type="text/javascript">
+        dont_want_spam=(':br' + 'un@' + 'c' + 's' + ".umass." + "e" + "du");
+        subtle=dont_want_spam.substring(1,18);
+        document.write('<a href="mailto' + dont_want_spam + '">' + subtle + '</a>')
+        </script>
+    </td></tr>
+	<tr><td>TA:<br/><br/><br/></td>
+		<td><a href="https://erfanentezami.github.io/">Erfan Entezami</a>
+		  <br/>office hours: TBA
+		  <br/>email:
+		    <script type="text/javascript">
+        dont_want_spam=(':eentezami@umass.edu');
+        subtle=dont_want_spam.substring(1);
+        document.write('<a href="mailto' + dont_want_spam + '">' + subtle + '</a>')
+        </script>
+	</td></tr>
+	<tr><td>TA:<br/><br/><br/></td>
+		<td><a href="https://aefree2.github.io/aefree2/">Anders Freeman</a>
+		  <br/>office hours: TBA
+		  <br/>email:
+		    <script type="text/javascript">
+        dont_want_spam=(':aefreeman@umass.edu');
+        subtle=dont_want_spam.substring(1);
+        document.write('<a href="mailto' + dont_want_spam + '">' + subtle + '</a>')
+        </script>
+	</td></tr>
+	<tr><td>TA:<br/><br/><br/></td>
+		<td>Zirui Liu
+		  <br/>office hours: TBA
+		  <br/>email:
+		    <script type="text/javascript">
+        dont_want_spam=(':zliu@umass.edu');
+        subtle=dont_want_spam.substring(1);
+        document.write('<a href="mailto' + dont_want_spam + '">' + subtle + '</a>')
+        </script>
+	</td></tr>
+	<tr><td>Junior TA:<br/><br/><br/></td>
+		<td>Shireen Meher Chirravuri
+		  <br/>office hours: TBA
+		  <br/>email:
+		    <script type="text/javascript">
+        dont_want_spam=(':shireenmeher@umass.edu');
+        subtle=dont_want_spam.substring(1);
+        document.write('<a href="mailto' + dont_want_spam + '">' + subtle + '</a>')
+        </script>
+	</td></tr>
+	<tr><td>Junior TA:<br/><br/><br/></td>
+		<td>Sahana Uday Shetty
+		  <br/>office hours: TBA
+		  <br/>email:
+		    <script type="text/javascript">
+        dont_want_spam=(':sahanaudaysh@umass.edu');
+        subtle=dont_want_spam.substring(1);
+        document.write('<a href="mailto' + dont_want_spam + '">' + subtle + '</a>')
+        </script>
+	</td></tr>
+	<tr><td>Junior TA:<br/><br/><br/></td>
+		<td>Ankit Panda
+		  <br/>office hours: TBA
+		  <br/>email:
+		    <script type="text/javascript">
+        dont_want_spam=(':ankitpanda@umass.edu');
+        subtle=dont_want_spam.substring(1);
+        document.write('<a href="mailto' + dont_want_spam + '">' + subtle + '</a>')
+        </script>
+	</td></tr>
+	<tr><td>Junior TA:<br/><br/><br/></td>
+		<td>Moumita Karmakar
+		  <br/>office hours: TBA
+		  <br/>email:
+		    <script type="text/javascript">
+        dont_want_spam=(':mkarmakar@umass.edu');
+        subtle=dont_want_spam.substring(1);
+        document.write('<a href="mailto' + dont_want_spam + '">' + subtle + '</a>')
+        </script>
+	</td></tr>
+
+</table>
+
+<p>All assignment submissions are through
+<a href="https://umamherst.instructure.com/courses/41134">Canvas</a>.</p>
+
+<p><strong>Late policy:</strong> Assignment due dates and times are listed on
+the <a href="#schedule">schedule</a>. All deadlines are sharp and the
+submission site will be closed at the specified time. No extensions will be
+granted after the assignment is due. Early requests for extensions will be
+considered only in extenuating circumstances. No more than one extension will
+be granted per student.</p>
+
+<hr/>
+
+<h3 id="grading">Grading:</h3>
+
+<p>Students are responsible for submitting <strong>all</strong> homework and
+project assignments. A student who fails to submit at least one of the homework
+or project assignments will receive
+the grade <strong>F</strong> for the entire class.</p>
+
+<strong>520</strong>
+<table border="1pt">
+  <tr><th>&nbsp;Assignment&nbsp;</th><th>Grade</th></tr>
+  <tr></tr>
+  <tr><td>Homework&nbsp;</td><td align="right">44%</td></tr>
+  <tr><td>Class project&nbsp;</td><td align="right">50%</td></tr>
+  <tr><td>Participation&nbsp;</td><td align="right">6%</td></tr>
+</table>
+
+<!-- <p>The project's 25% are further broken down:</p>
+	<table border="1pt">
+    <tr><td>literature review&nbsp;</td><td align="right">7%</td></tr>
+    <tr><td>project plan and presentation&nbsp;</td><td align="right">7%</td></tr>
+    <tr><td>final report and presentation&nbsp;</td><td align="right">11%</td></tr>
+    <tr><td><strong>total:</strong>&nbsp;</td><td align="right"><strong>25%</strong></td></tr>
+</table> -->
+	
+<hr/>
+
+<h3 id="schedule">Schedule:</h3>
+<p>(subject to change; check regularly)</p>
+<table bordercolor=grey cellpadding=4 cellspacing=0 border=1>
+	<tr>
+	<th>week</th>
+	<th>date</th>
+	<th>day</th>
+	<th>topic</th>
+	<th>homework</th>
+	<th><div align="center">project</div></th>
+	</tr>
+
+	<tr>
+	<td rowspan="2"><div align="center">Week 1</div></td>
+	<td>Sep 8</td>
+	<td align=center>Tu</td>
+	<td><a href="lectures/20260908Intro.pdf">Course introduction</a></td>
+	<td></td>
+	<td></td>
+	</tr>
+
+	<tr>
+	<td><font color="grey">Sep 10</font></td>
+	<td align=center><font color="grey">Th</font></td>
+	<td><font color="grey">No Class: CSL Celebration</font></td>
+	<td></td>
+	<td></td>
+	</tr>
+
+	<tr>
+	<td rowspan="2"><div align="center">Week 2</div></td>
+	<td>Sep 15</td>
+	<td align=center>Tu</td>
+	<td>Software architecture and design</td>
+	<td rowspan="5" bgcolor=pink><div align="center">
+	Homework 1<br/>
+	Due: Tu September 29, 2026, 9:00AM EDT</div></td>
+	<td rowspan="4" bgcolor="#33FF33"><div align="center">
+	Project topic selection
+	<br/>
+	Due: Th September 24, 2026, 9:00AM EDT</div></td>
+	</tr>
+
+	<tr>
+	<td>Sep 17</td>
+	<td align=center>Th</td>
+	<td>Best and worst programming practices</td>
+	</tr>
+
+	<tr>
+	<td rowspan="2"><div align="center">Week 3</div></td>
+	<td>Sep 22</td>
+	<td align=center>Tu</td>
+	<td>Object oriented design principles</td>
+	</tr>
+
+	<tr>
+	<td>Sep 24</td>
+	<td align=center>Th</td>
+	<td>Object oriented design patterns</td>
+	</tr>
+
+	<tr>
+	<td rowspan="2"><div align="center">Week 4</div></td>
+	<td>Sep 29</td>
+	<td align=center>Tu</td>
+	<td>Version control systems</td>
+	<td rowspan="4" bgcolor="#33FF33"><div align="center">
+	Final project plan<br/>
+	Due: Th October 8, 2026, 9:00AM EDT</div></td>
+	</tr>
+
+	<tr>
+	<td>Oct 1</td>
+	<td align=center>Th</td>
+	<td>Software testing</td>
+	<td></td>
+	</tr>
+
+	<tr>
+	<td rowspan="2"><div align="center">Week 5</div></td>
+	<td>Oct 6</td>
+	<td align=center>Tu</td>
+	<td>Debugging</td>
+	<td></td>
+	</tr>
+
+	<!-- OO design and Java 8 features -->
+
+	<tr>
+	<td>Oct 8</td>
+	<td align=center>Th</td>
+	<td>Collaborative specification 1</td>
+	<td rowspan="4" bgcolor=pink><div align="center">
+	Homework 2<br/>
+	Due: Tu October 20, 2026, 9:00AM EDT</div></td>
+	</tr>
+
+	<!-- Intro to empirical software engineering -->
+
+	<tr>
+	<td rowspan="2"><div align="center">Week 6</div></td>
+	<td>Oct 13</td>
+	<td align=center>Tu</td>
+	<td>Collaborative specification 2</td>
+	<td rowspan="8" bgcolor="#33FF33"><div align="center">
+	Final project mid-date report<br/>
+	Due: Th November 5, 2026, 9:00AM EST</div></td>
+	</tr>
+
+	<tr>
+	<td>Oct 15</td>
+	<td align=center>Th</td>
+	<td>No Lecture: Meet in groups for final project.</td>
+	</tr>
+	<!-- Experimental design and validity -->
+
+	<tr>
+	<td rowspan="2"><div align="center">Week 7</div></td>
+	<td>Oct 20</td>
+	<td align=center>Tu</td>
+	<td>Reliability and privacy</td>
+	</tr>
+
+	<tr>
+	<td>Oct 22</td>
+	<td align=center>Th</td>
+	<td>User interfaces</td>
+	<td></td>
+	</tr>
+
+	<tr>
+	<td rowspan="2"><div align="center">Week 8</div></td>
+	<td>Oct 27</td>
+	<td align=center>Tu</td>
+	<td>Reasoning about programs</td>
+	<td></td>
+	</tr>
+
+	<!-- A day in the life of a software engineer (guest lecture from industry) -->
+	<tr>
+	<td>Oct 29</td>
+	<td align=center>Th</td>
+	<td>Collaboration and pair programming</td>
+	<td rowspan="4" bgcolor=pink><div align="center">
+	Homework 3<br/>
+	Due: Tu November 10, 2026, 9:00AM EST</div></td>
+	</tr>
+
+	<tr>
+	<td rowspan="2"><div align="center">Week 9</div></td>
+	<td><font color="grey">Nov 3</font></td>
+	<td align=center><font color="grey">Tu</font></td>
+	<td><font color="grey">No Class: Election Day</font></td>
+	</tr>
+
+	<tr>
+	<td>Nov 5</td>
+	<td align=center>Th</td>
+	<td>Software fairness</td>
+	</tr>
+
+	<tr>
+	<td rowspan="2"><div align="center">Week 10</div></td>
+	<td>Nov 10</td>
+	<td align=center>Tu</td>
+	<td>Software trust</td>
+	<td rowspan="11" bgcolor="#33FF33"><div align="center">
+	Final project completion<br/>
+	Due: Tu Dec 15, 2026, 11:55PM EST</div></td>
+	</tr>
+
+	<tr>
+	<td>Nov 12</td>
+	<td align=center>Th</td>
+	<td>Automated program verification</td>
+	<td></td>
+	</tr>
+
+	<tr>
+	<td rowspan="2"><div align="center">Week 11</div></td>
+	<td>Nov 17</td>
+	<td align=center>Tu</td>
+	<td><!-- Final project mid-point presentations. --></td>
+	<td></td>
+	</tr>
+
+	<tr>
+	<td>Nov 19</td>
+	<td align=center>Th</td>
+	<td><!-- Guest lecture by <a href="https://www.cics.umass.edu/event/expanding-reach-fuzzing-exposing-syntax-errors-enabling-program-synthesis">Caroline Lemieux</a> (<a href="http://people.cs.umass.edu/~brun/omg/v/520.20191113Caroline.Lemieux.mp4">see the video</a>) --></td>
+	<td rowspan="4" bgcolor=pink><div align="center">
+	Homework 4<br/>
+	Due: Tu December 1, 2026, 9:00AM EST</div></td>
+	</tr>
+
+	<tr>
+	<td rowspan="2"><div align="center">Week 12</div></td>
+	<td><font color="grey">Nov 24</font></td>
+	<td align=center><font color="grey">Tu</font></td>
+	<td><font color="grey">No Class: UMass follows Wednesday schedule</font></td>
+	</tr>
+
+	<tr>
+	<td><font color="grey">Nov 26</font></td>
+	<td align=center><font color="grey">Th</font></td>
+	<td><font color="grey">No Class: Thanksgiving</font></td>
+	</tr>
+
+	<tr>
+	<td rowspan="2"><div align="center">Week 13</div></td>
+	<td>Dec 1</td>
+	<td align=center>Tu</td>
+	<td><!-- <a href="lectures/20191203PairProgramming.pdf">Collaboration and pair programming</a> --></td>
+	</tr>
+
+	<tr>
+	<td>Dec 3</td>
+	<td align=center>Th</td>
+	<td><!-- <a href="lectures/20191205PowerOfSoftware.pdf">Power of software</a> --></td>
+	<td></td>
+	</tr>
+
+	<tr>
+	<td rowspan="2"><div align="center">Week 14</div></td>
+	<td>Dec 8</td>
+	<td align=center>Tu</td>
+	<td><!-- Final project presentations --></td>
+	<td></td>
+	</tr>
+
+	<tr>
+	<td>Dec 10</td>
+	<td align=center>Th</td>
+	<td>Power of software</td>
+	<td></td>
+	</tr>
+
+	<tr>
+	<td><div align="center">Week 15</div></td>
+	<td>Dec 15</td>
+	<td align=center>Tu</td>
+	<td></td>
+	<td></td>
+	</tr>
+
+</table>
+
+<hr/>
+
+<h3 id="nondiscrimination">Nondiscrimination policy:</h3>
+
+<p>Software engineering is at its nature a collaborative activity and it
+benefits greatly from diversity. This class includes and welcomes all
+students regardless of age, background, citizenship, disability, sex,
+education, ethnicity, family status, gender, gender identity, geographical
+origin, language, military experience, political views, race, religion,
+sexual orientation, socioeconomic status, and work experience. Our
+discussions and learning will benefit from these and other diverse points of
+view. Any kind of language or action displaying bias against or
+discriminating against members of any group, or making members of any group
+uncomfortable are against the mission of this course and will not be
+tolerated. The instructor welcomes discussion of this policy, and encourages
+anyone experiencing concerns to speak with him.</p>
+
+<hr/>
+
+<h3 id="honesty">Academic integrity:</h3>
+
+<p>Students are allowed to work together on all aspects of this class. 
+However, for the homework assignments, each student must submit
+his or her own write up, clearly stating the collaborators. Your submission
+must be your own. When in doubt, contact the instructors about whether a
+potential action would be considered plagiarism. If you discuss material with
+anyone besides the class staff, acknowledge your collaborators in your
+write-up. If you obtain a key insight with help (e.g., through library work or
+a friend), acknowledge your source and write up the summary on your own.
+<strong>It is the student's responsibility to remove any possibility of
+someone else's work from being misconstrued as the student's</strong>. Never
+misrepresent someone else's work as your own. It must be absolutely clear what
+material is your original work. Plagiarism and other anti-intellectual
+behavior will be dealt with severely. Note that facilitation of plagiarism
+(giving your work to someone else) is also considered to be plagiarism, and
+will carry the same repercussions.</p>
+
+<p>Students are encouraged to use the Internet, literature, and other
+publicly-available resources, <strong>except the homework solutions and test
+(including quizzes, midterms, finals, and other exams) solutions, from past
+terms' versions of this course and other academic courses, whether at UMass
+and at other institutions</strong>. To reiterate, the students are not allowed
+to view and use past homework and test solutions, unless explicitly
+distributed by the COMPCSI 520 staff as study material.</p>
+
+<p>The use of AI-based and other generative technologies (such as, but not limited to ChatGPT) is allowed, but the students must explicitly and clearly disclose all such use whenever submitting anything for the class that benefited from the use of such technology. All submissions using such technology, for code, text, or any other material, must explicitly disclose and document its use.</p>
+
+<p>Whenever students use Internet, literature, and other publicly-available
+resources, they must clearly reference the materials in their write ups,
+attributing proper credit. This cannot be emphasized enough: <strong>attribute
+proper credit to your sources</strong>. Failure to do so will result in a zero
+grade for the assignment and possibly a failing grade for the class, at the
+instructor's discretion. Copying directly from resources is not permitted,
+unless the copying is clearly identified as a quote from a source. Most use of
+references should be written in the words of the student, placing the related
+work in proper context and describing the relevant comparison.</p>
+
+<p>The students should familiarize themselves with the UMass <a
+href="https://www.umass.edu/studentsuccess/your-plan/academic-integrity/academic-integrity-policy">Academic
+Honesty Policy</a> and <a
+href="https://www.umass.edu/dean-students/student-conduct/campus-policies/classroom_civility">
+Guidelines for Classroom Civility and Respect</a>. These policies and
+guidelines apply to this class.</p>
+
+<p>Students who violate University standards of academic integrity are subject
+to disciplinary sanctions, including failure in the course and suspension from
+the university. Since dishonesty in any form harms the individual, other
+students, and the university, policies on academic integrity have been and
+will be strictly enforced.</p>
+
+<hr/>
+
+<h3 id="reading">Reading:</h3>
+
+  <p>The following text books provide a more comprehensive discussion of the
+  topics addressed in this class. Note that these text books are not a
+  requirement for this class.</p>
+
+  <ul>
+  <li>Fundamentals of Software Engineering by Carlo Ghezzi, Mehdi Jazayeri,
+  Dino Mandrioli; Prentice Hall, 2002.</li>
+
+  <li>Introduction to software testing. Paul Ammann and Jeff Offutt.
+  Cambridge University Press, 2008.</li>
+
+  <li>Effective Java. Joshua Bloch. Addison-Wesley, 2001.</li>
+
+  <li>UML distilled: A brief guide to the standard object modeling language.
+  Martin Fowler. Addison-Wesley, 2004.</li>
+
+  <li>Software Architecture: Foundations, Theory, and Practice by Richard N.
+  Taylor, Nenad Medvidovic, and Eric Dashofy; John Wiley and Sons, 2010.</li>
+
+  <li>Design patterns: Elements of reusable object-oriented software. Erich
+  Gamma, Richard Helm, Ralph Johnson, John Vlissides. Addison-Wesley, 1994.</li>
+
+  <li>Head first design patterns. Eric Freeman and Elisabeth Robson. O'Reilly, 2004.</li>
+
+  </ul>
+
+  <hr/>
+
+<h3 id="prerequisites">Prerequisites:</h3>
+  <p> Students should have taken an intermediate course in software
+  engineering and have built, in a team, a software system of roughly 10,000
+  lines of code or more. Students are expected to be familiar with an object
+  oriented programming language, such as Java or C++. The ability to use
+  linux and download and use off-the-shelf tools are expected.</p>
+
+<h3 id="ack">Acknowledgements:</h3>
+  <p>Various materials used in this course have greatly benefited from
+  materials developed by Rene Just, Michael Ernst, David Notkin, Alex Orso, Juan Zhai, Heather Conboy, Claire Le Goues,
+  and Lee Osterweil.</p>
+
+
+</body>
+</html>

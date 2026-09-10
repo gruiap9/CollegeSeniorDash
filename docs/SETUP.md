@@ -72,14 +72,30 @@ assignments, grades and posts.
 ## 6. AI classification (optional)
 
 Rules alone classify most email. For ambiguous messages, Piazza summaries and
-news ranking, add an Anthropic API key:
+news ranking, add an API key for one of two supported providers. Pick one —
+`llm_provider` in `config.json` controls which is used (`"anthropic"` is the
+default).
+
+**Anthropic (Claude):**
 
 ```bash
 mb secret set anthropic_api_key
 ```
 
-Model defaults to `claude-haiku-4-5` (`llm_model` in `config.json`). Set
-`"llm_enabled": false` to run fully offline.
+Uses `llm_model` in `config.json` (default `claude-haiku-4-5`).
+
+**Google (Gemini):**
+
+```bash
+mb secret set gemini_api_key
+```
+
+Then set `"llm_provider": "gemini"` in `config.json`. Uses `llm_model_gemini`
+(default `gemini-3.8-flash`).
+
+Both keys can be stored at the same time; only the one named by
+`llm_provider` is used. Set `"llm_enabled": false` to run fully offline on
+rules alone regardless of provider.
 
 ## 7. Background sync + app
 
@@ -103,5 +119,5 @@ agent.
   backend.json        interpreter path the app uses for "Refresh"
   app_state.json      last_brief_shown_date, preferences
   logs/
-Keychain service "com.gruiapascale.morningbrief": gmail_token_json, outlook_msal_cache, canvas_token, anthropic_api_key
+Keychain service "com.gruiapascale.morningbrief": gmail_token_json, outlook_msal_cache, canvas_token, anthropic_api_key, gemini_api_key
 ```

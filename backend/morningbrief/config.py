@@ -115,9 +115,12 @@ class Config:
     )
     news_max_items: int = 5
 
-    # LLM
+    # LLM (routine classification/summaries only; never the source of truth for
+    # grades, due dates, senders or times). "anthropic" or "gemini".
     llm_enabled: bool = True
-    llm_model: str = "claude-haiku-4-5"  # routine classification/summaries; configurable
+    llm_provider: str = "anthropic"
+    llm_model: str = "claude-haiku-4-5"        # used when llm_provider == "anthropic"
+    llm_model_gemini: str = "gemini-3.8-flash"  # used when llm_provider == "gemini"
     llm_max_email_chars: int = 6000
 
     # Behaviour

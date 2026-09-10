@@ -16,7 +16,8 @@
    email: gradescope → `classifiers/gradescope_email.py`; piazza →
    `classifiers/piazza_email.py`; `@umass.edu` → `classifiers/school_email.py`;
    everything else → `classifiers/job_email.py`. Rules first; the LLM only
-   sees ambiguous cases and returns JSON (`services/llm.py`).
+   sees ambiguous cases and returns JSON (`services/llm.py`, provider
+   selectable between Anthropic and Gemini via `llm_provider`).
 3. **Change detection** (`services/change_detector.py` + inline in
    collectors) writes to the `events` table with a `dedupe_key`:
    `job.*`, `email.important`, `assignment.new|due_changed|due_soon|overdue|submitted`,

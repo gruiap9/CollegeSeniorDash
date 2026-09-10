@@ -126,9 +126,13 @@ class Config:
     llm_enabled: bool = True
     llm_provider: str = "anthropic"
     llm_model: str = "claude-haiku-4-5"        # used when llm_provider == "anthropic"
-    llm_model_gemini: str = "gemini-2.5-flash-lite"  # used when llm_provider == "gemini"; a
-    # well-established lite model with a much larger free-tier quota than the
-    # newest gemini-3.x flash models, which is what this workload needs
+    llm_model_gemini: str = "gemini-3.5-flash-lite"  # used when llm_provider == "gemini".
+    # gemini-2.5-flash-lite is no longer available to new API keys (Google's
+    # API returns a 404 telling you to use gemini-3.5-flash-lite instead — if
+    # this happens again in the future, the error message names the current
+    # replacement). Prefer a lite model over the newest full-size gemini-3.x
+    # flash models: this workload is many small per-email classification
+    # calls per sync, and lite models carry a much larger free-tier quota.
     # (many small classification calls per sync, not a handful of hard ones).
     llm_max_email_chars: int = 6000
 

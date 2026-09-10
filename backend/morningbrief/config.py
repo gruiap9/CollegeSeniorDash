@@ -120,7 +120,10 @@ class Config:
     llm_enabled: bool = True
     llm_provider: str = "anthropic"
     llm_model: str = "claude-haiku-4-5"        # used when llm_provider == "anthropic"
-    llm_model_gemini: str = "gemini-3.8-flash"  # used when llm_provider == "gemini"
+    llm_model_gemini: str = "gemini-2.5-flash-lite"  # used when llm_provider == "gemini"; a
+    # well-established lite model with a much larger free-tier quota than the
+    # newest gemini-3.x flash models, which is what this workload needs
+    # (many small classification calls per sync, not a handful of hard ones).
     llm_max_email_chars: int = 6000
 
     # Behaviour

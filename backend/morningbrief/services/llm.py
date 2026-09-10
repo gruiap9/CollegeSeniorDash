@@ -10,9 +10,12 @@ back to deterministic rules.
 
 from __future__ import annotations
 
+import ast
 import json
 import logging
 import os
+import re
+import time
 from typing import Any
 
 from .. import secrets
@@ -22,6 +25,12 @@ log = logging.getLogger(__name__)
 
 _anthropic_client = None
 _gemini_client = None
+
+# If the provider rate-limits us mid-sync, stop hammering it for the rest of
+# this process instead of retrying per-email (a sync can touch dozens of
+# emails; free-tier quotas on newer models can be as low as a few per minute).
+_gemini_cooldown_until = 0.0
+DEFAULT_COOLDOWN_SECONDS = 60.0
 
 
 # ---------------------------------------------------------------- Anthropic
@@ -51,7 +60,7 @@ def _structured_anthropic(cfg: Config, system: str, user: str, schema: dict[str,
         log.warning("Anthropic LLM refused request")
         return None
     text = next((b.text for b in resp.content if b.type == "text"), None)
-    return json.loads(text) if text else None
+    return _parse_json_loose(text, provider="anthropic")
 
 
 # ------------------------------------------------------------------ Gemini
@@ -72,17 +81,69 @@ def _get_gemini_client():
     return _gemini_client
 
 
+def _gemini_on_cooldown() -> bool:
+    return time.monotonic() < _gemini_cooldown_until
+
+
+def _start_gemini_cooldown(seconds: float) -> None:
+    global _gemini_cooldown_until
+    until = time.monotonic() + seconds
+    if until > _gemini_cooldown_until:
+        _gemini_cooldown_until = until
+        log.warning("Gemini rate-limited; backing off for %.0fs (falling back to rules until then)", seconds)
+
+
+def _retry_after_seconds(exc: Exception) -> float:
+    m = re.search(r"retry in (\d+(?:\.\d+)?)s", str(exc), re.I)
+    return float(m.group(1)) + 1.0 if m else DEFAULT_COOLDOWN_SECONDS
+
+
 def _structured_gemini(cfg: Config, system: str, user: str, schema: dict[str, Any], max_tokens: int) -> dict[str, Any] | None:
+    if _gemini_on_cooldown():
+        return None
     client = _get_gemini_client()
-    interaction = client.interactions.create(
-        model=cfg.llm_model_gemini,
-        input=user,
-        system_instruction=system,
-        response_format={"type": "text", "mime_type": "application/json", "schema_": schema},
-        generation_config={"max_output_tokens": max_tokens},
-    )
+    try:
+        interaction = client.interactions.create(
+            model=cfg.llm_model_gemini,
+            input=user,
+            system_instruction=system,
+            response_mime_type="application/json",
+            response_format={"type": "text", "mime_type": "application/json", "schema_": schema},
+            generation_config={"max_output_tokens": max_tokens},
+        )
+    except Exception as e:
+        if getattr(e, "status_code", None) == 429:
+            _start_gemini_cooldown(_retry_after_seconds(e))
+            return None
+        raise
     text = getattr(interaction, "output_text", None)
-    return json.loads(text) if text else None
+    return _parse_json_loose(text, provider="gemini")
+
+
+# ------------------------------------------------------------------ parsing
+def _parse_json_loose(text: str | None, *, provider: str) -> dict[str, Any] | None:
+    """Parse model output as JSON, tolerating common near-misses:
+    markdown code fences, and Python-repr-style single-quoted dicts.
+    Returns None (and logs the raw text) only if nothing works.
+    """
+    if not text:
+        return None
+    candidate = text.strip()
+    fence = re.match(r"^```(?:json)?\s*(.*?)\s*```$", candidate, re.S)
+    if fence:
+        candidate = fence.group(1).strip()
+    try:
+        return json.loads(candidate)
+    except json.JSONDecodeError:
+        pass
+    try:
+        obj = ast.literal_eval(candidate)  # tolerates {'a': 'b', 'c': True} etc.
+        if isinstance(obj, dict):
+            return json.loads(json.dumps(obj))  # normalize (e.g. True -> true) and validate
+    except (ValueError, SyntaxError):
+        pass
+    log.warning("%s returned unparseable output; falling back to rules. Raw (truncated): %r", provider, text[:300])
+    return None
 
 
 # ------------------------------------------------------------------ Public
@@ -91,7 +152,11 @@ def _api_key(cfg: Config) -> str | None:
 
 
 def available(cfg: Config) -> bool:
-    return bool(cfg.llm_enabled and _api_key(cfg))
+    if not (cfg.llm_enabled and _api_key(cfg)):
+        return False
+    if cfg.llm_provider == "gemini" and _gemini_on_cooldown():
+        return False
+    return True
 
 
 def structured(cfg: Config, *, system: str, user: str, schema: dict[str, Any], max_tokens: int = 2000) -> dict[str, Any] | None:

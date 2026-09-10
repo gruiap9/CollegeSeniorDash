@@ -13,6 +13,7 @@ dependencies = [
   "google-api-python-client>=2.100",
   "google-auth-oauthlib>=1.2",
   "msal>=1.30",
+  "truststore>=0.9",
 ]
 
 [project.optional-dependencies]

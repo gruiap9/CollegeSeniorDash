@@ -18,6 +18,7 @@ from ..config import Config
 from ..db.database import Database
 from ..db.models import Assignment
 from ..db.repo import upsert_assignment
+from ..services.change_detector import emit_assignment_change_events
 from .base import CollectResult, Collector
 
 log = logging.getLogger(__name__)
@@ -141,11 +142,13 @@ class CanvasCollector(Collector):
                     if str(a["id"]) in seen:
                         continue
                     seen.add(str(a["id"]))
-                    r = upsert_assignment(db, normalize_assignment(code, a))
+                    norm = normalize_assignment(code, a)
+                    r = upsert_assignment(db, norm)
                     if r["new"]:
                         res.new += 1
                     elif r["changes"]:
                         res.updated += 1
+                        res.events += emit_assignment_change_events(db, norm, r["changes"])
                 res.notes.append(f"{code}:{len(seen)}")
         finally:
             client.close()

@@ -63,9 +63,15 @@ class Config:
     timezone: str = "America/New_York"
     user_name: str = ""
 
-    # Accounts
+    # Accounts. Multiple Gmail addresses are supported (e.g. a personal Gmail
+    # and a custom domain that's actually a Google account) — each one goes
+    # through its own OAuth consent and gets its own Keychain-stored token.
+    # `gmail_accounts` holds the authorized addresses; `setup-gmail` appends to
+    # it automatically (it discovers the address from the account you just
+    # signed in with, so you never type it by hand).
     gmail_enabled: bool = False
-    gmail_client_secret_file: str = ""  # path to Google OAuth client JSON (kept outside repo)
+    gmail_client_secret_file: str = ""  # path to Google OAuth client JSON (kept outside repo; shared by all Gmail accounts)
+    gmail_accounts: list[str] = field(default_factory=list)
     outlook_enabled: bool = False
     outlook_client_id: str = ""  # Azure app registration (public client) id
     outlook_tenant: str = "common"

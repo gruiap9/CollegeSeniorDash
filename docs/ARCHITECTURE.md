@@ -5,7 +5,11 @@
 1. **Collectors** (`backend/morningbrief/collectors/`) fetch raw data and
    upsert normalized rows. Each is independent; a failure is recorded in
    `sync_state.last_error` and never stops the others.
-   - `gmail.py` / `outlook.py` — messages since last success (first run: 7 days).
+   - `gmail.py` — one or more Gmail addresses (`cfg.gmail_accounts`), each with
+     its own Keychain token and its own "since last success" cursor
+     (`sync_state` keyed as `gmail:<address>`) — one account failing doesn't
+     stop the others. `outlook.py` is single-account. Both: first run per
+     account pulls the last 7 days.
    - `canvas.py` — active courses → assignments with submission state.
    - `course_sites.py` — CS520 (`parse_cs520`) and CS461 (`parse_cs461`):
      deterministic deadline parsing (`utils/dates.parse_due_text`) and

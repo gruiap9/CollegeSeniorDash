@@ -11,4 +11,4 @@ if [[ ! -x .venv/bin/python ]]; then python3 -m venv .venv; fi
 "$ROOT/scripts/build_app.sh"
 echo
 echo "Next: see docs/SETUP.md to connect Gmail / Outlook / Canvas, then:"
-echo "  backend/.venv/bin/morningbrief sync && open \"$ROOT/mac/build/Morning Brief.app\""
+echo "  backend/.venv/bin/morningbrief sync && open \"/Applications/Morning Brief.app\""

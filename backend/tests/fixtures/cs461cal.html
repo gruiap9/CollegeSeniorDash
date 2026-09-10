@@ -1,0 +1,282 @@
+<!DOCTYPE html><html><head><title></title><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="icon" type="image/png" href="/_static_/images/favicon.png"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato&amp;Oswald:wght@500&amp;display=swap"><link rel="stylesheet" href="/_static_/css/styles.css"><link rel="stylesheet" href="/_static_/css/katex.min.css"><meta property="og:title" content=""><meta property="og:description" content="Elliptic Curve Crypto"><meta property="og:site_name" content="UMASS compsci461/661"><meta property="og:url" content="http://compscix61.org:8000/courseCalendar"><meta property="og:image" content="http://compscix61.org:8000/imagesNexa/favicon.png"><meta property="og:type" content="website"></head><body><script src="https://unpkg.com/web-animations-js@2.3.1/web-animations.min.js"></script><script src="https://unpkg.com/hammerjs@2.0.8/hammer.min.js"></script><script src="/_static_/js/muuri.js"></script><script>var STACKEDIT_URL="https://stackedit.reference.cash/app";
+var SITE_NAME="UMASS compsci461/661";</script><script src="/_static_/js/base64ArrayBuffer.js"></script><script src="/_static_/js/layout.js"></script><script>setupLayout(document, window);
+</script><!--a(href="/")--><!--  img#headerCoin(src="/_static_/images/bchCoin.svg", onclick="linkTo('/home'); return false;", title="home")--><a href="/"><img id="headerCoin" src="/_static_/images/homeIcon.png" onclick="linkTo('/home'); return false;" title="home"></a><div id="cwikheader"><img id="sideBarButton" src="/_static_/images/closemenuIcon.svg" onclick="toggleSidebar()" title="toggle menu"><img id="pdfexport" src="/_static_/images/pdfExportIcon.svg" onclick="pdfExport()" title="export to pdf"><div class="toolBar"><div class="editBar"></div></div><div id="headerPageTitle"><strong><center id="pageTitle"></center></strong></div><div id="titleMenus"><div id="EpBar"></div><div id="userBar"><div id="LogInOutDiv"> <span class="horizMenu" onclick="login()">login</span></div></div></div></div><div id="sidebarAndContent"><div class="leftsidebar"><div id="lsb"><div id="sidebargrid"><div class="sbBubble" id="searchTextPositioner"><div class="item-content"><form id="searchBar"><input class="textEntry" id="searchText" type="text" placeholder="search" value=""><input id="hiddenSubmit" type="submit" onclick="search(); return false;"></form></div></div><div class="sbBubble" id="searchResults"><div class="item-content"><center class="headerText" id="searchHeader">Search</center><div id="searchI"></div></div></div><div class="sbBubble" id="structure"><div class="item-content"><center class="headerText">Page Contents</center><div id="structureI"><a class="ltoc_h2" onclick="jumpTo('subject-to-change'); return false;" href="#subject-to-change"><span class="itoc_h2">Subject to Change</span></a>
+<a class="ltoc_h5" onclick="jumpTo('week-15-dec-9'); return false;" href="#week-15-dec-9"><span class="itoc_h5">Week 15: Dec 9</span></a>
+<a class="ltoc_h5" onclick="jumpTo('week-14-dec-2-coming-off-of-thanksgiving-recess'); return false;" href="#week-14-dec-2-coming-off-of-thanksgiving-recess"><span class="itoc_h5">Week 14: Dec 2 (coming off of Thanksgiving recess)</span></a>
+<a class="ltoc_h5" onclick="jumpTo('week-13-nov-19-25:----blockchain-applications'); return false;" href="#week-13-nov-19-25:----blockchain-applications"><span class="itoc_h5">Week 13: Nov 19-25:    Blockchain applications</span></a>
+<a class="ltoc_h2" onclick="jumpTo('week-13-nov-19-25'); return false;" href="#week-13-nov-19-25"><span class="itoc_h2">Week 13: (Nov 19-25)</span></a>
+<a class="ltoc_h3" onclick="jumpTo('reference'); return false;" href="#reference"><span class="itoc_h3">Reference</span></a>
+<a class="ltoc_h2" onclick="jumpTo('week-12-nov-12-18:----scripting-topics'); return false;" href="#week-12-nov-12-18:----scripting-topics"><span class="itoc_h2">Week 12: Nov 12-18:    Scripting topics</span></a>
+<a class="ltoc_h3" onclick="jumpTo('reference'); return false;" href="#reference"><span class="itoc_h3">Reference</span></a>
+<a class="ltoc_h2" onclick="jumpTo('week-11-nov-5---11:-no-class-veteran’s-day-cryptozombies-week-2'); return false;" href="#week-11-nov-5---11:-no-class-veteran’s-day-cryptozombies-week-2"><span class="itoc_h2">Week 11: Nov 5 - 11: No class (Veteran’s day) CryptoZombies Week 2</span></a>
+<a class="ltoc_h2" onclick="jumpTo('week-10-oct-29---nov-4:-no-class-election-day--cryptozombies-week-1'); return false;" href="#week-10-oct-29---nov-4:-no-class-election-day--cryptozombies-week-1"><span class="itoc_h2">Week 10: Oct 29 - Nov 4: No class (Election Day)  CryptoZombies Week 1</span></a>
+<a class="ltoc_h2" onclick="jumpTo('week-9-oct-22-28---ethereum-family-scripting,-bitcoin-family-scripting,-tokens'); return false;" href="#week-9-oct-22-28---ethereum-family-scripting,-bitcoin-family-scripting,-tokens"><span class="itoc_h2">Week 9: Oct 22-28   Ethereum-family Scripting, Bitcoin-family Scripting, Tokens</span></a>
+<a class="ltoc_h3" onclick="jumpTo('tools'); return false;" href="#tools"><span class="itoc_h3">Tools</span></a>
+<a class="ltoc_h3" onclick="jumpTo('reference-material'); return false;" href="#reference-material"><span class="itoc_h3">Reference material</span></a>
+<a class="ltoc_h3" onclick="jumpTo('week-8-oct-15-21--midterm'); return false;" href="#week-8-oct-15-21--midterm"><span class="itoc_h3">Week 8: Oct 15-21  Midterm</span></a>
+<a class="ltoc_h3" onclick="jumpTo('week-7-oct-8-14--byzantine-generals-problem-not-on-midterm'); return false;" href="#week-7-oct-8-14--byzantine-generals-problem-not-on-midterm"><span class="itoc_h3">Week 7: Oct 8-14  Byzantine Generals Problem (not on midterm)</span></a>
+<a class="ltoc_h3" onclick="jumpTo('reference'); return false;" href="#reference"><span class="itoc_h3">Reference</span></a>
+<a class="ltoc_h5" onclick="jumpTo('week-6-oct-1-7-block-propagation'); return false;" href="#week-6-oct-1-7-block-propagation"><span class="itoc_h5">Week 6: Oct 1-7 Block Propagation</span></a>
+<a class="ltoc_h5" onclick="jumpTo('week-5-sept-24-30-bitcoin-networking,-eclipse-attacks,-and-distributed-clock-synchronization'); return false;" href="#week-5-sept-24-30-bitcoin-networking,-eclipse-attacks,-and-distributed-clock-synchronization"><span class="itoc_h5">Week 5: Sept 24-30 Bitcoin Networking, Eclipse Attacks, and Distributed Clock Synchronization</span></a>
+<a class="ltoc_h3" onclick="jumpTo('reference'); return false;" href="#reference"><span class="itoc_h3">Reference</span></a>
+<a class="ltoc_h3" onclick="jumpTo('week-4-sept-17-23-elliptic-curve-crypto'); return false;" href="#week-4-sept-17-23-elliptic-curve-crypto"><span class="itoc_h3">Week 4: (Sept 17-23) Elliptic Curve Crypto</span></a>
+<a class="ltoc_h3" onclick="jumpTo('reference'); return false;" href="#reference"><span class="itoc_h3">Reference</span></a>
+<a class="ltoc_h3" onclick="jumpTo('week-3-sep-9---16-selfish-mining,-sybil-attack'); return false;" href="#week-3-sep-9---16-selfish-mining,-sybil-attack"><span class="itoc_h3">Week 3: (Sep 9 - 16) Selfish Mining, Sybil Attack</span></a>
+<a class="ltoc_h3" onclick="jumpTo('reference'); return false;" href="#reference"><span class="itoc_h3">Reference</span></a>
+<a class="ltoc_h3" onclick="jumpTo('week-2-sep-3-9-cryptography-overview,-doublespend-attacks'); return false;" href="#week-2-sep-3-9-cryptography-overview,-doublespend-attacks"><span class="itoc_h3">Week 2: (Sep 3-9) Cryptography Overview, Doublespend Attacks</span></a>
+<a class="ltoc_h3" onclick="jumpTo('reference'); return false;" href="#reference"><span class="itoc_h3">Reference</span></a>
+<a class="ltoc_h3" onclick="jumpTo('week-1-introduction'); return false;" href="#week-1-introduction"><span class="itoc_h3">Week 1: Introduction</span></a>
+<a class="ltoc_h3" onclick="jumpTo('reference'); return false;" href="#reference"><span class="itoc_h3">Reference</span></a>
+</div></div></div><div class="sbBubble" id="related"><div class="item-content"><center class="headerText">Related</center><div id="relatedI"></div></div></div><div class="sbBubble" id="history"><div class="item-content"><center class="headerText">Recently Viewed</center><div id="historyI"><a class="lhis" href="/courseCalendar"><span class="ihis">courseCalendar</span></a>
+</div></div></div></div></div></div><div class="VertB"><div class="notification"><center id="notifyText"></center></div><div class="Content"><div class="item-content"><div class="cwikcontent"><div class="wikicontent"><h2 id="subject-to-change"><a name="subject-to-change">Subject to Change</a></h2>
+<p>This page is a preview of different topics and possible weeks to cover them.  I might move stuff around or add/drop topics!</p>
+<p>Dec 11-17: Final Exams</p>
+<h5 id="week-15-dec-9"><a name="week-15-dec-9">Week 15: Dec 9</a></h5>
+<h5 id="week-14-dec-2-coming-off-of-thanksgiving-recess"><a name="week-14-dec-2-coming-off-of-thanksgiving-recess">Week 14: Dec 2 (coming off of Thanksgiving recess)</a></h5>
+<h5 id="week-13-nov-19-25----blockchain-applications"><a name="week-13-nov-19-25:----blockchain-applications">Week 13: Nov 19-25:    Blockchain applications</a></h5>
+<ul>
+<li><a href="https://en.bitcoin.it/wiki/CoinJoin">CoinJoin</a>  (Anonymity)</li>
+<li><a href="/week/lightning/lightning.mp4">Lightning Video Lecture</a></li>
+<li><a href="https://github.com/bitcoin-unlimited/BUwiki/blob/master/blockchain_voting.md">Blockchain Voting Techniques</a></li>
+<li><a href="https://github.com/bitcoin-unlimited/BUwiki/blob/master/election_impossible_triangle.md">Voting’s impossible triangle</a></li>
+</ul>
+<h2 id="week-13-nov-19-25"><a name="week-13-nov-19-25">Week 13: (Nov 19-25)</a></h2>
+<ul>
+<li>
+<p><a href="https://medium.com/bollinger-investment-group/constant-function-market-makers-defis-zero-to-one-innovation-968f77022159">Constant Function Market Maker</a> (Trustless, permissionless, exchange technique)</p>
+</li>
+<li>
+<p>Bitcoin Script Virtual Machine Description: <a href="https://github.com/bitcoinbook/bitcoinbook/blob/develop/ch07_authorization-authentication.adoc">https://github.com/bitcoinbook/bitcoinbook/blob/develop/ch07_authorization-authentication.adoc</a></p>
+</li>
+<li>
+<p><a href="https://spec.nexa.org/script/1script/">Bitcoin (actually Nexa) instruction set (opcode) Reference</a>.  Yes, actually READ through these!  (so you get a sense of what can and can’t be done)</p>
+</li>
+<li>
+<p><a href="https://www.paradigm.xyz/2020/08/ethereum-is-a-dark-forest">Ethereum is a dark forest</a> (Ethereum development story)</p>
+</li>
+</ul>
+<h3 id="reference"><a name="reference">Reference</a></h3>
+<ul>
+<li><a href="/week/transactions/example_scripts.pdf">Bitcoin Scripts and Design Patterns</a></li>
+</ul>
+<h2 id="week-12-nov-12-18----scripting-topics"><a name="week-12-nov-12-18:----scripting-topics">Week 12: Nov 12-18:    Scripting topics</a></h2>
+<ul>
+<li>
+<p><a href="https://medium.com/bollinger-investment-group/constant-function-market-makers-defis-zero-to-one-innovation-968f77022159">Constant Function Market Maker</a> (Trustless, permissionless, exchange technique)</p>
+</li>
+<li>
+<p>Bitcoin Script Virtual Machine Description: <a href="https://github.com/bitcoinbook/bitcoinbook/blob/develop/ch07_authorization-authentication.adoc">https://github.com/bitcoinbook/bitcoinbook/blob/develop/ch07_authorization-authentication.adoc</a></p>
+</li>
+<li>
+<p><a href="https://spec.nexa.org/script/1script/">Bitcoin (actually Nexa) instruction set (opcode) Reference</a>.  Yes, actually READ through these!  (so you get a sense of what can and can’t be done)</p>
+</li>
+<li>
+<p><a href="https://www.paradigm.xyz/2020/08/ethereum-is-a-dark-forest">Ethereum is a dark forest</a> (Ethereum development story)</p>
+</li>
+</ul>
+<h3 id="reference-1"><a name="reference">Reference</a></h3>
+<ul>
+<li><a href="/week/transactions/example_scripts.pdf">Bitcoin Scripts and Design Patterns</a></li>
+</ul>
+<h2 id="week-11-nov-5---11-no-class-veterans-day-cryptozombies-week-2"><a name="week-11-nov-5---11:-no-class-veteran’s-day-cryptozombies-week-2">Week 11: Nov 5 - 11: No class (Veteran’s day) CryptoZombies Week 2</a></h2>
+<h2 id="week-10-oct-29---nov-4-no-class-election-day--cryptozombies-week-1"><a name="week-10-oct-29---nov-4:-no-class-election-day--cryptozombies-week-1">Week 10: Oct 29 - Nov 4: No class (Election Day)  CryptoZombies Week 1</a></h2>
+<h2 id="week-9-oct-22-28---ethereum-family-scripting-bitcoin-family-scripting-tokens"><a name="week-9-oct-22-28---ethereum-family-scripting,-bitcoin-family-scripting,-tokens">Week 9: Oct 22-28   Ethereum-family Scripting, Bitcoin-family Scripting, Tokens</a></h2>
+<h3 id="tools"><a name="tools">Tools</a></h3>
+<ul>
+<li>Ethereum online IDE: <a href="https://remix.ethereum.org">https://remix.ethereum.org</a></li>
+<li>Bitcoin Scripting online: <a href="https://siminchen.github.io/bitcoinIDE/build/editor.html">https://siminchen.github.io/bitcoinIDE/build/editor.html</a></li>
+<li>Nexa script debugger: <a href="https://debug.nexa.org/">https://debug.nexa.org/</a></li>
+</ul>
+<h3 id="reference-material"><a name="reference-material">Reference material</a></h3>
+<ul>
+<li>
+<p>Ethereum Tokens</p>
+<ul>
+<li>Contract-implemented and enforced tokens (similar to what you did in cryptozombies).  Follow the link into the EIPs to see the Solidity interface.</li>
+<li><a href="https://ethereum.org/en/developers/docs/standards/tokens/erc-20/">ERC-20 Token Standard</a></li>
+<li><a href="https://ethereum.org/en/developers/docs/standards/tokens/erc-721/">ERC-721 Non-fungible Tokens</a></li>
+</ul>
+</li>
+<li>
+<p>Bitcoin Tokens (Ordinals and Inscriptions)</p>
+<ul>
+<li><a href="https://docs.ordinals.com/overview.html">https://docs.ordinals.com/overview.html</a> and/or <a href="https://github.com/ordinals/ord/blob/master/bip.mediawiki">https://github.com/ordinals/ord/blob/master/bip.mediawiki</a> Skim to understand that one can assign each Satoshi an order by mining – this is the Nth satoshi mined, and that that number can be carried forward through transactions to assign a number to every satoshi in the UTXO set.</li>
+</ul>
+</li>
+<li>
+<p><a href="https://docs.google.com/document/d/1X-yrqBJNj6oGPku49krZqTMGNNEWnUJBRFjX7fJXvTs/edit?usp=sharing">Native Blockchain Tokens (Group Tokenization Proposal)</a></p>
+<ul>
+<li>Miner validated tokens on bitcoin-like blockchains.  Skip the intro, read “Functional Description”, up to “Contract Encumbered Groups”.  Read the use cases to understand general token use cases for any token technology on any blockchain.</li>
+</ul>
+</li>
+</ul>
+<h3 id="week-8-oct-15-21--midterm"><a name="week-8-oct-15-21--midterm">Week 8: Oct 15-21  Midterm</a></h3>
+<h3 id="week-7-oct-8-14--byzantine-generals-problem-not-on-midterm"><a name="week-7-oct-8-14--byzantine-generals-problem-not-on-midterm">Week 7: Oct 8-14  Byzantine Generals Problem (not on midterm)</a></h3>
+<p><a href="/week/byzantine_generals/Byzantine_Generals.mp4">Byzantine Generals Video Lecture</a><br />
+<a href="/week/byzantine_generals/BFT_POW_Comparison.mp4">Byzantine Fault Tolerance vs Proof Of Work Video Lecture</a></p>
+<p><a href="/papers/iNetSec_2015.pdf">Vukolic paper: Proof-of-work vs. BFT Replication</a></p>
+<h3 id="reference-2"><a name="reference">Reference</a></h3>
+<p><a href="/week/byzantine_generals/Byzantine_Generals.pdf">Byzantine Generals Video Lecture Notes</a><br />
+<a href="/week/byzantine_generals/BFT_POW_Comparison.pdf">FLP, CAP, BFT Comparison lecture notes</a></p>
+<p><a href="/papers/Impossibility_Distributed_Consensus_FLP_jacm85.pdf">(optional) Impossibility Of Distributed Consensus (original FLP paper)</a></p>
+<h5 id="week-6-oct-1-7-block-propagation"><a name="week-6-oct-1-7-block-propagation">Week 6: Oct 1-7 Block Propagation</a></h5>
+<p><a href="/week/block_propagation/graphene_lecture.mp4">Efficient Block Propagation Lecture Video</a><br />
+<a href="/week/block_propagation/bloom_filters_notes.pdf">Bloom Filter Lecture Notes</a><br />
+<a href="/papers/IBLT_1101.2245.pdf">Invertible Bloom Lookup Table (IBLT)</a><br />
+<a href="/papers/graphene.sigcomm.pdf">(661) Graphene Paper</a><br />
+<a href="/week/block_propagation/graphene_short.pdf">(461) Graphene short paper</a></p>
+<h5 id="week-5-sept-24-30-bitcoin-networking-eclipse-attacks-and-distributed-clock-synchronization"><a name="week-5-sept-24-30-bitcoin-networking,-eclipse-attacks,-and-distributed-clock-synchronization">Week 5: Sept 24-30 Bitcoin Networking, Eclipse Attacks, and Distributed Clock Synchronization</a></h5>
+<ul>
+<li>
+<p><a href="/week/networking_eclipse/Networking_Eclipse.mp4">Networking and Eclipse Attack Video Lecture</a></p>
+</li>
+<li>
+<p><a href="/papers/1txn.pdf">Single transaction block analysis</a></p>
+</li>
+<li>
+<p><strong>Clock Synchronization</strong></p>
+</li>
+</ul>
+<p>We are going to use short excerpts from “Distributed Systems: Principles and Paradigms” by Andrew S. Tanenbaum and Maarten Van Steen. Fortunately, the entire text is available for free! Just give any email address to the <a href="https://www.distributed-systems.net/index.php/books/ds3/">author’s web site</a> and they’ll send you a PDF.</p>
+<p>Please read:</p>
+<ul>
+<li>Section 6.1: Clock Synchronization (no need to read the Berkeley algorithm or about wireless networks)</li>
+<li>Section 6.2: Logical clocks</li>
+</ul>
+<p>Later in the semester, we’ll use the text for another topic.</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=gaptoWIYgeg">Logical Clock Conditions - Georgia Tech</a></li>
+<li><a href="https://www.youtube.com/watch?v=HX_EA8_nG54">Real World Scenario (clocks) - Georgia Tech</a></li>
+</ul>
+<h3 id="reference-3"><a name="reference">Reference</a></h3>
+<ul>
+<li><a href="/papers/sec15-paper-heilman.pdf"><strong>Eclipse Attacks on Bitcoin’s Peer-to-Peer Network</strong></a></li>
+</ul>
+<p>Purely optional reading for the course, but if you are interested, here is the original Lamport paper:</p>
+<ul>
+<li><a href="http://amturing.acm.org/p558-lamport.pdf"><strong>Time, clocks, and the ordering of events in a distributed system</strong></a>, by Leslie Lamport, Communications of the ACM; 21(7): 558–565. (1978)</li>
+</ul>
+<hr />
+<h3 id="week-4-sept-17-23-elliptic-curve-crypto"><a name="week-4-sept-17-23-">Week 4: (Sept 17-23) </a><em>Elliptic Curve Crypto</em></h3>
+<ul>
+<li><a href="/week/elliptic_curve_crypto/ECC_part1.mp4">ECC Video Lecture part 1</a></li>
+<li><a href="/week/elliptic_curve_crypto/ECC_part2.mp4">ECC Video Lecture part 2</a></li>
+</ul>
+<h3 id="reference-4"><a name="reference">Reference</a></h3>
+<p><a href="https://andrea.corbellini.name/2015/05/17/elliptic-curve-cryptography-a-gentle-introduction/">(Optional) elliptic-curve-cryptography-a-gentle-introduction</a><br />
+<a href="https://andrea.corbellini.name/2015/05/23/elliptic-curve-cryptography-finite-fields-and-discrete-logarithms/">(Optional) ECC part 2</a><br />
+<a href="/papers/paar_pelzl_chapter_8_excerpt.pdf">(Optional) Chapter 8, Paar and Pelzl</a><br />
+<a href="/papers/paar_pelzl_chapter_9.pdf">(Optional) Chapter 9, Paar and Pelzl</a></p>
+<p><strong>661 only</strong><br />
+Review this paper <a href="/papers/autofinalization_parking.pdf">Attacks against Autofinalization and Parking</a>.<br />
+Understand:</p>
+<ul>
+<li>That a variety of “tweaks” can be invented to modify Satoshi’s algorithm to choose the “main chain”</li>
+<li>What two proposed tweaks: “autofinalization” and “parking” actually do</li>
+<li>There seems to be no description of this consensus change, except for the <a href="https://github.com/Bitcoin-ABC/bitcoin-abc/blob/7e8aab945660cbb148bea1db029300568c543e68/src/validation.cpp#L2567">source code located in this function</a> (reading just the comments may be helpful).</li>
+</ul>
+<h3 id="week-3-sep-9---16-selfish-mining-sybil-attack"><a name="week-3-sep-9---16-selfish-mining,-sybil-attack">Week 3: (Sep 9 - 16) Selfish Mining, Sybil Attack</a></h3>
+<p>Please skim the papers, watch the videos, and then read the papers carefully.</p>
+<ul>
+<li>
+<p><a href="/papers/selfish_mining-btcProcFC.pdf">Selfish Mining paper</a></p>
+</li>
+<li>
+<p><a href="/papers/sybil_attack-IPTPS2002.pdf">Sybil Attack paper</a></p>
+</li>
+<li>
+<p><a href="/week/sybil/Sybil_Attacks.mp4">Sybil Attack Lecture</a></p>
+</li>
+<li>
+<p><a href="/week/selfish/Selfish_Mining.mp4">Selfish Mining Lecture</a></p>
+</li>
+</ul>
+<h3 id="reference-5"><a name="reference">Reference</a></h3>
+<ul>
+<li><a href="/week/sybil/Sybil_Attacks.pdf">Sybil Attack Lecture Notes</a></li>
+<li><a href="/week/selfish/Selfish_Mining.pdf">Selfish Mining Lecture Notes</a></li>
+</ul>
+<hr />
+<h3 id="week-2-sep-3-9-cryptography-overview-doublespend-attacks"><a name="week-2-sep-3-9-cryptography-overview,-doublespend-attacks">Week 2: (Sep 3-9) Cryptography Overview, Doublespend Attacks</a></h3>
+<p>We continue our investigation into basic blockchain architecture.</p>
+<ul>
+<li><a href="/week/crypto_overview/cryptography_intro.mp4">Overview of Applied Cryptography Video Lecture</a></li>
+<li><a href="/week/doublespend_attack/doublespend_intro.mp4">Doublespend Attack Video Lecture (1/2)</a></li>
+<li><a href="/week/doublespend_attack/doublespend_analysis.mp4">Doublespend Attack  (2/2)</a> – note the final equation in this video has some typos although the derivation is correct in essence.  Use the equation in Satoshi’s white paper to calculate the likelihood of matching the main chain.  And to calculate the probability of exceeding the main chain:</li>
+</ul>
+<p><span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>λ</mi><mo>=</mo><mfrac><mrow><mi>z</mi><mi>q</mi></mrow><mi>p</mi></mfrac></mrow><annotation encoding="application/x-tex">\lambda = \frac{zq}{p}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em"></span><span class="mord mathnormal">λ</span><span class="mspace" style="margin-right:0.277778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.277778em"></span></span><span class="base"><span class="strut" style="height:1.988em;vertical-align:-0.88044em"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.10756em"><span style="top:-2.314em"><span class="pstrut" style="height:3em"></span><span class="mord"><span class="mord mathnormal">p</span></span></span><span style="top:-3.23em"><span class="pstrut" style="height:3em"></span><span class="frac-line" style="border-bottom-width:0.04em"></span></span><span style="top:-3.677em"><span class="pstrut" style="height:3em"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em">z</span><span class="mord mathnormal" style="margin-right:0.03588em">q</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.88044em"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></span><br />
+<span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mn>1</mn><mo>−</mo><munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>z</mi><mo>+</mo><mn>1</mn></mrow></munderover><mo stretchy="false">(</mo><mfrac><mrow><msup><mi>λ</mi><mi>k</mi></msup><msup><mi>e</mi><mrow><mo>−</mo><mi>λ</mi></mrow></msup></mrow><mrow><mi>k</mi><mo stretchy="false">!</mo></mrow></mfrac><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mo stretchy="false">(</mo><mi>q</mi><mi mathvariant="normal">/</mi><mi>p</mi><msup><mo stretchy="false">)</mo><mrow><mi>z</mi><mo>+</mo><mn>1</mn><mo>−</mo><mi>k</mi></mrow></msup><mo stretchy="false">)</mo><mo separator="true">,</mo><mi>i</mi><mi>f</mi><mi>q</mi><mo>&lt;</mo><mi>p</mi></mrow><annotation encoding="application/x-tex">1- \sum_{k=0}^{z+1} (\frac{\lambda^ke^{-\lambda}}{k!})(1-(q/p)^{z+1-k}), if q &lt; p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.222222em"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.222222em"></span></span><span class="base"><span class="strut" style="height:3.10323em;vertical-align:-1.30211em"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.80111em"><span style="top:-1.84789em;margin-left:0em"><span class="pstrut" style="height:3.05em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em">k</span><span class="mrel mtight">=</span><span class="mord mtight">0</span></span></span></span><span style="top:-3.05em"><span class="pstrut" style="height:3.05em"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3em;margin-left:0em"><span class="pstrut" style="height:3.05em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.04398em">z</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.30211em"><span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.52611em"><span style="top:-2.314em"><span class="pstrut" style="height:3em"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03148em">k</span><span class="mclose">!</span></span></span><span style="top:-3.23em"><span class="pstrut" style="height:3em"></span><span class="frac-line" style="border-bottom-width:0.04em"></span></span><span style="top:-3.677em"><span class="pstrut" style="height:3em"></span><span class="mord"><span class="mord"><span class="mord mathnormal">λ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.849108em"><span style="top:-3.063em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em">k</span></span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.849108em"><span style="top:-3.063em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mathnormal mtight">λ</span></span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">)</span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.222222em"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.222222em"></span></span><span class="base"><span class="strut" style="height:1.14911em;vertical-align:-0.25em"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em">q</span><span class="mord">/</span><span class="mord mathnormal">p</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.899108em"><span style="top:-3.113em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.04398em">z</span><span class="mbin mtight">+</span><span class="mord mtight">1</span><span class="mbin mtight">−</span><span class="mord mathnormal mtight" style="margin-right:0.03148em">k</span></span></span></span></span></span></span></span></span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.166667em"></span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.10764em">f</span><span class="mord mathnormal" style="margin-right:0.03588em">q</span><span class="mspace" style="margin-right:0.277778em"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.277778em"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em"></span><span class="mord mathnormal">p</span></span></span></span></span></span></p>
+<h3 id="reference-6"><a name="reference">Reference</a></h3>
+<ul>
+<li><a href="/week/crypto_overview/overview_of_applied_cryptography.pdf">Overview of Applied Cryptography Notes</a></li>
+<li><a href="/week/doublespend_attack/doublespend_analysis.pdf">Doublespend Analysis Notes</a> – with correct doublespend derivation</li>
+</ul>
+<hr />
+<h3 id="week-1-introduction"><a name="week-1-introduction">Week 1: Introduction</a></h3>
+<p>These are the materials for our first week.</p>
+<ul>
+<li><a href="/papers/Bitcoin-satoshi.pdf">The Bitcoin Whitepaper</a></li>
+<li><a href="/week/introduction/intro-definitions.mp4">Introduction  and Class Logistics Video Lecture</a></li>
+<li><a href="/week/introduction/blockchains_part_1.mp4">Blockchains Part 1 Video Lecture</a></li>
+<li><a href="/week/introduction/blockchains_part_2.mp4">Blockchains Part 2 Video Lecture</a></li>
+</ul>
+<h3 id="reference-7"><a name="reference">Reference</a></h3>
+<ul>
+<li><a href="/week/introduction/introduction_and_class_logistics.pdf">Introduction  and Class Logistics Video Notes</a></li>
+<li><a href="/week/introduction/Bitcoin_and_Nakamotos_paper.pdf">Blockchains Video Notes</a></li>
+<li><a href="/notes/blockchain_in_one_diagram.pdf">blockchain in one diagram</a></li>
+</ul>
+</div></div></div></div></div></div><textarea id="rawMarkdown"></textarea><script>let user = {"loggedIn":false};  // This inanity sets the javascript user variable to the pug user variable
+let portrait = window.matchMedia("(orientation: portrait)").matches;
+let width = window.innerWidth;
+
+// switch the search into the sidebar
+if (1) {  // search always in sidebar now
+  let sbSrch = document.getElementById("searchHeader");
+  let srchEntry = document.getElementById("searchBar");
+  sbSrch.after(srchEntry);
+  
+  //document.getElementById("searchTextPositioner").classList.add('searchTextPortraitPositioner');
+  //document.getElementById("searchText").classList.add('searchTextPortrait');
+  //document.getElementById("searchButton").style.display = "none";  // No magnifying glass in the sidebar
+
+  document.getElementById("searchBar").addEventListener("submit", function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      search();
+  }, false);
+}
+
+
+//var sidebarGrid = new Muuri('#sidebargrid', {
+//  dragEnabled: true, dragAxis: 'y'
+//});
+var sidebarGrid = new Muuri('#sidebargrid');
+
+if (width < 1024)
+{
+    MoveEditProposalBarIntoSidebar();
+}
+
+// search always in sidebar now
+if (0) sidebarGrid.hide(document.getElementById("searchResults"), {instant: true});
+sidebarGrid.refreshItems().layout();
+
+
+if (portrait) {
+    //document.getElementById("EpBar").style.display = "none";  // No room in portrait mode to offer this
+    document.querySelector(".leftsidebar").style.display = "none";
+    document.getElementById("sideBarButton").src = '/_static_/images/openmenuIcon.svg';
+}
+ </script><script src="/_static_/js/katex.min.js"></script><script src="https://d3js.org/d3.v5.min.js"></script><script src="/_static_/js/he.js"></script><script src="/_static_/js/mermaid/mermaid.js"></script><script>mermaid.initialize({logLevel:5, startOnLoad:true});</script><script src="/_static_/js/mathjax/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script><script src="/_static_/js/se.js"></script><script src="/_static_/js/editLinkage.js"></script><script type="module">let ctnt = document.querySelector(".wikicontent").innerHTML;
+var origMdData = "## Subject to Change\n\nThis page is a preview of different topics and possible weeks to cover them.  I might move stuff around or add/drop topics!\n\nDec 11-17: Final Exams\n##### Week 15: Dec 9\n##### Week 14: Dec 2 (coming off of Thanksgiving recess) \n\n##### Week 13: Nov 19-25:    Blockchain applications\n- [CoinJoin](https://en.bitcoin.it/wiki/CoinJoin)  (Anonymity)\n- [Lightning Video Lecture](/week/lightning/lightning.mp4)\n- [Blockchain Voting Techniques](https://github.com/bitcoin-unlimited/BUwiki/blob/master/blockchain_voting.md)\n- [Voting's impossible triangle](https://github.com/bitcoin-unlimited/BUwiki/blob/master/election_impossible_triangle.md)\n\n## Week 13: (Nov 19-25)\n - [Constant Function Market Maker](https://medium.com/bollinger-investment-group/constant-function-market-makers-defis-zero-to-one-innovation-968f77022159) (Trustless, permissionless, exchange technique)\n- Bitcoin Script Virtual Machine Description: https://github.com/bitcoinbook/bitcoinbook/blob/develop/ch07_authorization-authentication.adoc\n- [Bitcoin (actually Nexa) instruction set (opcode) Reference](https://spec.nexa.org/script/1script/).  Yes, actually READ through these!  (so you get a sense of what can and can't be done)\n\n- [Ethereum is a dark forest](https://www.paradigm.xyz/2020/08/ethereum-is-a-dark-forest) (Ethereum development story)\n\n### Reference\n- [Bitcoin Scripts and Design Patterns](/week/transactions/example_scripts.pdf)\n\n## Week 12: Nov 12-18:    Scripting topics\n - [Constant Function Market Maker](https://medium.com/bollinger-investment-group/constant-function-market-makers-defis-zero-to-one-innovation-968f77022159) (Trustless, permissionless, exchange technique)\n- Bitcoin Script Virtual Machine Description: https://github.com/bitcoinbook/bitcoinbook/blob/develop/ch07_authorization-authentication.adoc\n- [Bitcoin (actually Nexa) instruction set (opcode) Reference](https://spec.nexa.org/script/1script/).  Yes, actually READ through these!  (so you get a sense of what can and can't be done)\n\n- [Ethereum is a dark forest](https://www.paradigm.xyz/2020/08/ethereum-is-a-dark-forest) (Ethereum development story)\n\n### Reference\n- [Bitcoin Scripts and Design Patterns](/week/transactions/example_scripts.pdf)\n\n## Week 11: Nov 5 - 11: No class (Veteran's day) CryptoZombies Week 2\n## Week 10: Oct 29 - Nov 4: No class (Election Day)  CryptoZombies Week 1\n## Week 9: Oct 22-28   Ethereum-family Scripting, Bitcoin-family Scripting, Tokens\n### Tools\n- Ethereum online IDE: https://remix.ethereum.org\n- Bitcoin Scripting online: https://siminchen.github.io/bitcoinIDE/build/editor.html\n- Nexa script debugger: https://debug.nexa.org/\n\n### Reference material\n- Ethereum Tokens\n\t- Contract-implemented and enforced tokens (similar to what you did in cryptozombies).  Follow the link into the EIPs to see the Solidity interface.\n\t - [ERC-20 Token Standard](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/)\n\t - [ERC-721 Non-fungible Tokens](https://ethereum.org/en/developers/docs/standards/tokens/erc-721/)\n\t \n- Bitcoin Tokens (Ordinals and Inscriptions)\n\t- https://docs.ordinals.com/overview.html and/or https://github.com/ordinals/ord/blob/master/bip.mediawiki Skim to understand that one can assign each Satoshi an order by mining -- this is the Nth satoshi mined, and that that number can be carried forward through transactions to assign a number to every satoshi in the UTXO set.\n\n- [Native Blockchain Tokens (Group Tokenization Proposal)](https://docs.google.com/document/d/1X-yrqBJNj6oGPku49krZqTMGNNEWnUJBRFjX7fJXvTs/edit?usp=sharing)  \n\t - Miner validated tokens on bitcoin-like blockchains.  Skip the intro, read \"Functional Description\", up to \"Contract Encumbered Groups\".  Read the use cases to understand general token use cases for any token technology on any blockchain.\n\n### Week 8: Oct 15-21  Midterm\n### Week 7: Oct 8-14  Byzantine Generals Problem (not on midterm)\n[Byzantine Generals Video Lecture](/week/byzantine_generals/Byzantine_Generals.mp4)\n[Byzantine Fault Tolerance vs Proof Of Work Video Lecture](/week/byzantine_generals/BFT_POW_Comparison.mp4)\n\n[Vukolic paper: Proof-of-work vs. BFT Replication](/papers/iNetSec_2015.pdf)\n\n### Reference\n\n[Byzantine Generals Video Lecture Notes](/week/byzantine_generals/Byzantine_Generals.pdf)\n[FLP, CAP, BFT Comparison lecture notes](/week/byzantine_generals/BFT_POW_Comparison.pdf)\n\n[(optional) Impossibility Of Distributed Consensus (original FLP paper)](/papers/Impossibility_Distributed_Consensus_FLP_jacm85.pdf)\n\n\n##### Week 6: Oct 1-7 Block Propagation\n\n[Efficient Block Propagation Lecture Video](/week/block_propagation/graphene_lecture.mp4)\n[Bloom Filter Lecture Notes](/week/block_propagation/bloom_filters_notes.pdf)\n[Invertible Bloom Lookup Table (IBLT)](/papers/IBLT_1101.2245.pdf)\n[(661) Graphene Paper](/papers/graphene.sigcomm.pdf)\n[(461) Graphene short paper](/week/block_propagation/graphene_short.pdf)\n\n##### Week 5: Sept 24-30 Bitcoin Networking, Eclipse Attacks, and Distributed Clock Synchronization\n\n- [Networking and Eclipse Attack Video Lecture](/week/networking_eclipse/Networking_Eclipse.mp4)\n- [Single transaction block analysis](/papers/1txn.pdf)\n\n- **Clock Synchronization**\n\nWe are going to use short excerpts from \"Distributed Systems: Principles and Paradigms\" by Andrew S. Tanenbaum and Maarten Van Steen. Fortunately, the entire text is available for free! Just give any email address to the [author's web site](https://www.distributed-systems.net/index.php/books/ds3/) and they'll send you a PDF.\n\nPlease read:\n-   Section 6.1: Clock Synchronization (no need to read the Berkeley algorithm or about wireless networks)\n-   Section 6.2: Logical clocks\n\nLater in the semester, we'll use the text for another topic.\n\n- [Logical Clock Conditions - Georgia Tech](https://www.youtube.com/watch?v=gaptoWIYgeg)\n- [Real World Scenario (clocks) - Georgia Tech](https://www.youtube.com/watch?v=HX_EA8_nG54)\n\n### Reference\n - [**Eclipse Attacks on Bitcoin's Peer-to-Peer Network**](/papers/sec15-paper-heilman.pdf)\n\nPurely optional reading for the course, but if you are interested, here is the original Lamport paper:\n-   [**Time, clocks, and the ordering of events in a distributed system**](http://amturing.acm.org/p558-lamport.pdf), by Leslie Lamport, Communications of the ACM; 21(7): 558–565. (1978)\n\n\n---\n### Week 4: (Sept 17-23) *Elliptic Curve Crypto*\n- [ECC Video Lecture part 1](/week/elliptic_curve_crypto/ECC_part1.mp4)\n- [ECC Video Lecture part 2](/week/elliptic_curve_crypto/ECC_part2.mp4)\n\n### Reference\n[(Optional) elliptic-curve-cryptography-a-gentle-introduction](https://andrea.corbellini.name/2015/05/17/elliptic-curve-cryptography-a-gentle-introduction/)\n[(Optional) ECC part 2](https://andrea.corbellini.name/2015/05/23/elliptic-curve-cryptography-finite-fields-and-discrete-logarithms/)\n[(Optional) Chapter 8, Paar and Pelzl](/papers/paar_pelzl_chapter_8_excerpt.pdf)\n[(Optional) Chapter 9, Paar and Pelzl](/papers/paar_pelzl_chapter_9.pdf)\n\n**661 only**\nReview this paper [Attacks against Autofinalization and Parking](/papers/autofinalization_parking.pdf).\nUnderstand:\n * That a variety of \"tweaks\" can be invented to modify Satoshi's algorithm to choose the \"main chain\"\n * What two proposed tweaks: \"autofinalization\" and \"parking\" actually do\n * There seems to be no description of this consensus change, except for the [source code located in this function](https://github.com/Bitcoin-ABC/bitcoin-abc/blob/7e8aab945660cbb148bea1db029300568c543e68/src/validation.cpp#L2567) (reading just the comments may be helpful).\n\n\n### Week 3: (Sep 9 - 16) Selfish Mining, Sybil Attack\nPlease skim the papers, watch the videos, and then read the papers carefully. \n- [Selfish Mining paper](/papers/selfish_mining-btcProcFC.pdf )\n- [Sybil Attack paper](/papers/sybil_attack-IPTPS2002.pdf)\n\n- [Sybil Attack Lecture](/week/sybil/Sybil_Attacks.mp4)\n- [Selfish Mining Lecture](/week/selfish/Selfish_Mining.mp4)\n\n### Reference\n- [Sybil Attack Lecture Notes](/week/sybil/Sybil_Attacks.pdf)\n- [Selfish Mining Lecture Notes](/week/selfish/Selfish_Mining.pdf)\n\n---\n### Week 2: (Sep 3-9) Cryptography Overview, Doublespend Attacks \n\nWe continue our investigation into basic blockchain architecture.   \n  \n- [Overview of Applied Cryptography Video Lecture](/week/crypto_overview/cryptography_intro.mp4)\n-  [Doublespend Attack Video Lecture (1/2)](/week/doublespend_attack/doublespend_intro.mp4)\n-  [Doublespend Attack  (2/2)](/week/doublespend_attack/doublespend_analysis.mp4) -- note the final equation in this video has some typos although the derivation is correct in essence.  Use the equation in Satoshi's white paper to calculate the likelihood of matching the main chain.  And to calculate the probability of exceeding the main chain:\n\n$$\\lambda = \\frac{zq}{p}$$\n$$1- \\sum_{k=0}^{z+1} (\\frac{\\lambda^ke^{-\\lambda}}{k!})(1-(q/p)^{z+1-k}), if q < p$$\n\n### Reference\n- [Overview of Applied Cryptography Notes](/week/crypto_overview/overview_of_applied_cryptography.pdf) \n- [Doublespend Analysis Notes](/week/doublespend_attack/doublespend_analysis.pdf) -- with correct doublespend derivation \n\n---\n### Week 1: Introduction\nThese are the materials for our first week.\n\n- [The Bitcoin Whitepaper](/papers/Bitcoin-satoshi.pdf)\n- [Introduction  and Class Logistics Video Lecture](/week/introduction/intro-definitions.mp4)\n- [Blockchains Part 1 Video Lecture](/week/introduction/blockchains_part_1.mp4)\n- [Blockchains Part 2 Video Lecture](/week/introduction/blockchains_part_2.mp4)\n\n### Reference\n- [Introduction  and Class Logistics Video Notes](/week/introduction/introduction_and_class_logistics.pdf)\n- [Blockchains Video Notes](/week/introduction/Bitcoin_and_Nakamotos_paper.pdf)\n- [blockchain in one diagram](/notes/blockchain_in_one_diagram.pdf)";
+if ((ctnt == "") || (ctnt == "loading..."))
+{
+    processFetchedMd(origMdData);
+}
+else
+{
+    document.getElementById('rawMarkdown').value = origMdData;
+}
+// In case the page changed the sidebar (like adding related items)
+sidebarGrid.refreshItems().layout();</script></body></html>

@@ -27,6 +27,7 @@ rm -rf "$APP"
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
 cp "$BIN" "$APP/Contents/MacOS/MorningBrief"
 cp "$PKG/Resources/Info.plist" "$APP/Contents/Info.plist"
+cp "$PKG/Resources/AppIcon.icns" "$APP/Contents/Resources/AppIcon.icns"
 echo -n "APPL????" > "$APP/Contents/PkgInfo"
 codesign --force --sign - "$APP" >/dev/null 2>&1 || true   # ad-hoc signature
 echo "Built: $APP"

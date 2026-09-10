@@ -28,6 +28,8 @@ from .logging_setup import setup as setup_logging
 def cmd_init(args) -> int:
     cfg = Config.load()
     Database().close()
+    # Tell the SwiftUI app which interpreter runs the backend.
+    (data_dir() / "backend.json").write_text(json.dumps({"python": sys.executable, "args": ["-m", "morningbrief.main"]}, indent=2) + "\n")
     print(f"Data dir : {data_dir()}")
     print(f"Config   : {config_path()}")
     print(f"Database : {db_path()}")

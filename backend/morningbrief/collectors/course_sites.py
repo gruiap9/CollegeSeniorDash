@@ -158,11 +158,36 @@ def parse_generic(course: str, url: str, html: str) -> SiteData:
 PARSERS = {"cs520": parse_cs520, "cs461": parse_cs461, "generic": parse_generic}
 
 
-def fetch(url: str) -> str:
-    with httpx.Client(timeout=30, follow_redirects=True, headers={"User-Agent": UA}) as c:
-        r = c.get(url)
-        r.raise_for_status()
-        return r.text
+def _ssl_context():
+    try:
+        import ssl
+
+        import truststore
+
+        return truststore.SSLContext(ssl.PROTOCOL_TLS_CLIENT)  # use macOS system trust like Safari/curl
+    except Exception:
+        return True
+
+
+def fetch(url: str, allow_insecure: bool = False, attempts: int = 3) -> str:
+    last: Exception | None = None
+    for i in range(attempts):
+        try:
+            with httpx.Client(timeout=30, follow_redirects=True, headers={"User-Agent": UA}, verify=_ssl_context()) as c:
+                r = c.get(url)
+                r.raise_for_status()
+                return r.text
+        except httpx.ConnectError as e:
+            last = e
+            if "certificate" in str(e).lower() and allow_insecure:
+                log.warning("TLS certificate problem for %s (%s); fetching without verification (public page)", url, e)
+                with httpx.Client(timeout=30, follow_redirects=True, headers={"User-Agent": UA}, verify=False) as c:
+                    r = c.get(url)
+                    r.raise_for_status()
+                    return r.text
+        except httpx.HTTPError as e:
+            last = e
+    raise last  # type: ignore[misc]
 
 
 def ingest(db: Database, site: CourseSite, data: SiteData, res: CollectResult, page_label: str = "") -> None:
@@ -213,10 +238,10 @@ class CourseSiteCollector(Collector):
         for site in cfg.course_sites:
             parser = PARSERS.get(site.parser, parse_generic)
             try:
-                data = parser(site.course, site.url, fetch(site.url))
+                data = parser(site.course, site.url, fetch(site.url, site.allow_insecure_ssl))
                 ingest(db, site, data, res)
                 for extra in site.extra_urls:
-                    d2 = parser(site.course, extra, fetch(extra))
+                    d2 = parser(site.course, extra, fetch(extra, site.allow_insecure_ssl))
                     ingest(db, site, d2, res, page_label=slugify(extra.rsplit("/", 1)[-1]))
                 res.notes.append(f"{site.course}:{len(data.assignments)} deadlines")
             except Exception as e:

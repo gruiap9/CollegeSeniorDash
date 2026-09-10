@@ -53,6 +53,9 @@ class CourseSite:
     url: str
     parser: str  # "cs520" | "cs461" | "generic"
     extra_urls: list[str] = field(default_factory=list)
+    # Public pages only. If the site's TLS certificate is broken (compscix61.org
+    # has served an expired one), retry without verification and log a warning.
+    allow_insecure_ssl: bool = False
 
 
 @dataclass
@@ -84,6 +87,7 @@ class Config:
                 url="https://compscix61.org/",
                 parser="cs461",
                 extra_urls=["https://compscix61.org/courseCalendar.md"],
+                allow_insecure_ssl=True,
             ),
         ]
     )
@@ -101,7 +105,6 @@ class Config:
             {"name": "TechCrunch", "url": "https://techcrunch.com/feed/", "weight": 0.8},
             {"name": "Hacker News", "url": "https://hnrss.org/frontpage?points=150", "weight": 0.9},
             {"name": "OpenAI", "url": "https://openai.com/news/rss.xml", "weight": 1.0},
-            {"name": "Anthropic", "url": "https://www.anthropic.com/rss.xml", "weight": 1.0},
             {"name": "Google Blog", "url": "https://blog.google/rss/", "weight": 0.7},
             {"name": "Microsoft", "url": "https://blogs.microsoft.com/feed/", "weight": 0.6},
             {"name": "Meta Engineering", "url": "https://engineering.fb.com/feed/", "weight": 0.6},
